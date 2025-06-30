@@ -17,6 +17,8 @@ else
     echo -e "$G You are root user $N"
 fi
 
+echo "Script has been exuted at $TIMESTAMP" &>>$LOGFILE
+
 VALIDATE(){
     if [ $? -ne 0 ]
     then
@@ -27,3 +29,5 @@ VALIDATE(){
 }
 
 cp mongo.repo /etc/yum.repos.d/mongo.repo
+
+VALIDATE $? "Copying Mongo Repo" &>>$LOGFILE
