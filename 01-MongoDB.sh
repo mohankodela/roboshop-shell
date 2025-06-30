@@ -28,6 +28,6 @@ VALIDATE(){
     fi
 }
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo
+cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFILE
 
-VALIDATE $? "Copying Mongo Repo" &>>$LOGFILE
+VALIDATE $? "Copying Mongo Repo"
