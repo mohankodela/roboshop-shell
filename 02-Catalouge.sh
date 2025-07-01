@@ -7,7 +7,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-LOGFILE="/tmp/$0-$TIMESTAMP"
+LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
 echo "Script started executing at $TIMESTAMP" &>>$LOGFILE
 
@@ -22,9 +22,9 @@ fi
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo "$2 is $R FAILED $N"
+        echo -e "$2 is $R FAILED $N"
     else
-        echo "$2 is $G SUCCESS $N"
+        echo -e "$2 is $G SUCCESS $N"
     fi
 }
 
