@@ -61,7 +61,7 @@ npm install
 
 VALIDATE $? "Installing Dependencies"
 
-cp catalogue.service /etc/systemd/system/
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/
 
 VALIDATE $? "Copying Catalogue Service"
 
