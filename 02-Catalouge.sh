@@ -59,6 +59,10 @@ cd /app
 
 npm install 
 
+sleep 1
+
+npm audit fix
+
 VALIDATE $? "Installing Dependencies"
 
 cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/
