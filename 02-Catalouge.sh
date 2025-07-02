@@ -6,6 +6,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+MONGO_HOST=mongodb.mohankodela.shop
 
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
@@ -45,32 +46,40 @@ useradd roboshop &>>$LOGFILE
 VALIDATE $? "Creating user roboshop"
 
 echo "Creating app directory"
-mkdir /app
+mkdir /app &>>$LOGFILE
 
 echo "Downloading catalouge"
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
 
-cd /app 
+cd /app &>>$LOGFILE
 
 echo "Unzipping catalouge to app directory"
 unzip /tmp/catalogue.zip
 
-cd /app
+cd /app &>>$LOGFILE
 
-npm install 
+npm install &>>$LOGFILE
 
 sleep 1
 
-npm audit fix
+npm audit fix &>>$LOGFILE
 
 VALIDATE $? "Installing Dependencies"
 
-cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/ &>>$LOGFILE
 
 VALIDATE $? "Copying Catalogue Service"
 
-systemctl daemon-reload
+systemctl daemon-reload &>>$LOGFILE
 
-systemctl start catalogue
+systemctl start catalogue &>>$LOGFILE
 
 VALIDATE $? "Started Catalogue Service"
+
+dnf install mongodb-org-shell -y &>>$LOGFILE
+
+VALIDATE $? "Install MongoDB Client"
+
+mongo --host $MONGO_HOST </app/schema/catalogue.js &>>$LOGFILE
+
+VALIDATE $? "Load Schema"
