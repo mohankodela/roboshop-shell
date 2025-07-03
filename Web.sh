@@ -27,6 +27,17 @@ VALIDATE(){
     fi
 }
 
+echo "Checking if Nginx is Installed"
+
+dnf list installed nginx &>>$LOGFILE
+
+if [ $? -ne 0 ]
+then
+    echo -e "$Y Nginx is not Installed $N"
+else
+    echo -e "$G Nginx is Installed SKIPPING $N"
+fi
+
 echo "Installing Nginx"
 
 dnf install nginx -y &>>$LOGFILE
