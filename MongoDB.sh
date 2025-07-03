@@ -20,7 +20,7 @@ fi
 echo "Script has been exuted at $TIMESTAMP" &>>$LOGFILE
 
 VALIDATE(){
-    if [ $? -ne 0 ]
+    if [ $1 -ne 0 ]
     then
         echo -e "$2 is $R FAILED $N"
     else
