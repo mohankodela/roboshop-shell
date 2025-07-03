@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ID=$( id -u )
-TIMESTAMP=$( date +F%-%H:%M:%S)
+TIMESTAMP=$( date +%F-%H:%M:%S)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -53,9 +53,11 @@ systemctl start nginx &>>$LOGFILE
 VALIDATE $? "Starting Nginx"
 
 echo "Removing Default File"
+
 rm -rf /usr/share/nginx/html/* &>>$LOGFILE
 
 echo "Downloading Web.zip" &>>$LOGFILE
+
 curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip
 
 cd /usr/share/nginx/html &>>$LOGFILE
