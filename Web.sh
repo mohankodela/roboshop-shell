@@ -64,7 +64,7 @@ cd /usr/share/nginx/html &>>$LOGFILE
 
 unzip -o /tmp/web.zip &>>$LOGFILE
 
-cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/ &>>$LOGFILE
+cp -rf /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/ &>>$LOGFILE
 
 systemctl restart nginx &>>$LOGFILE
 
