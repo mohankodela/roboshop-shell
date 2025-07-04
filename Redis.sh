@@ -33,9 +33,9 @@ dnf module disable redis -y &>>$LOGFILE
 
 VALIDATE $? "Disable Redis"
 
-dnf module enable redis:7 -y &>>$LOGFILE
+dnf module enable redis:4 -y &>>$LOGFILE
 
-VALIDATE $? "Enabling Redis 7"
+VALIDATE $? "Enabling Redis 4"
 
 dnf install redis --skip-broken -y &>>$LOGFILE
 
