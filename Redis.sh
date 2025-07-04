@@ -37,7 +37,7 @@ dnf module enable redis:4 -y &>>$LOGFILE
 
 VALIDATE $? "Enabling Redis 4"
 
-dnf install redis --skip-broken -y &>>$LOGFILE
+dnf install redis -y &>>$LOGFILE
 
 VALIDATE $? "Installing Redis"
 
