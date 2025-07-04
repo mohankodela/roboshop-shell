@@ -29,19 +29,11 @@ VALIDATE(){
     fi
 }
 
-dnf install epel-release -y &>>$LOGFILE
-
-VALIDATE $? "EPEL"
-
-dnf install https://rpms.remirepo.net/enterprise/8/remi-release-8.3-1.el8.remi.noarch.rpm -y &>>$LOGFILE
-
-VALIDATE $? "Remi"
-
 sudo dnf module reset redis &>>$LOGFILE
 
 VALIDATE $? "Reset"
 
-sudo dnf module enable redis:remi-7.0 &>>$LOGFILE
+sudo dnf module enable redis:6 -y &>>$LOGFILE
 
 VALIDATE $? "Enable"
 
