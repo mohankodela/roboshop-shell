@@ -29,15 +29,7 @@ VALIDATE(){
     fi
 }
 
-dnf module disable redis --skip-broken -y &>>$LOGFILE
-
-VALIDATE $? "RPM Redis"
-
-dnf module enable redis:7 -y --skip-broken -y &>>$LOGFILE
-
-VALIDATE $? "Enabling Redis"
-
-dnf install redis --skip-broken -y &>>$LOGFILE
+dnf install redis -y &>>$LOGFILE
 
 VALIDATE $? "Installing Redis"
 
