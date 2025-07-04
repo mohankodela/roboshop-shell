@@ -29,9 +29,25 @@ VALIDATE(){
     fi
 }
 
-dnf install redis -y &>>$LOGFILE
+dnf install epel-release -y &>>$LOGFILE
 
-VALIDATE $? "Installing Redis"
+VALIDATE $? "EPEL"
+
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>$LOGFILE
+
+VALIDATE $? "Remi"
+
+sudo dnf module reset redis &>>$LOGFILE
+
+VALIDATE $? "Reset"
+
+sudo dnf module enable redis:remi-7.0 &>>$LOGFILE
+
+VALIDATE $? "Enable"
+
+sudo dnf install redis -y &>>$LOGFILE
+
+VALIDATE $? "Install"
 
 echo "Updating Config Files"
 
