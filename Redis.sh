@@ -29,15 +29,15 @@ VALIDATE(){
     fi
 }
 
-sudo dnf module reset redis &>>$LOGFILE
+dnf module reset redis &>>$LOGFILE
 
 VALIDATE $? "Reset"
 
-sudo dnf module enable redis:6 -y &>>$LOGFILE
+dnf module enable redis:6 -y &>>$LOGFILE
 
 VALIDATE $? "Enable"
 
-sudo dnf install redis -y &>>$LOGFILE
+dnf install redis -y &>>$LOGFILE
 
 VALIDATE $? "Install"
 
