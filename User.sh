@@ -51,7 +51,7 @@ else
     echo "User Exists $Y SKIPPING $N"
 fi
 
-mkdir -o /app &>>$LOGFILE
+mkdir /app &>>$LOGFILE
 
 VALIDATE $? "Create app directory"
 
