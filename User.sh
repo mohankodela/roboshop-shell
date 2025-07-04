@@ -48,7 +48,7 @@ then
     echo "UserID doesn't exist"
     useradd roboshop
 else 
-    echo "User Exists $Y SKIPPING $N"
+    echo -e "User Exists $Y SKIPPING $N"
 fi
 
 mkdir /app &>>$LOGFILE
