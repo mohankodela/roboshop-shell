@@ -29,17 +29,23 @@ VALIDATE(){
     fi
 }
 
-echo "Disabling Redis"
+dnf install epel-release -y &>>$LOGFILE
 
-dnf module disable redis -y &>>$LOGFILE
+VALIDATE $? "EPEL Install"
 
-VALIDATE $? "Disabling Redis"
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>$LOGFILE
+
+VALIDATE $? "Remi Install"
+
+dnf module reset redis &>>$LOGFILE
+
+VALIDATE $? "Reset Redis"
 
 dnf module enable redis:remi-7.0 -y &>>$LOGFILE
 
 VALIDATE $? "Enabling Redis 7"
 
-dnf install redis -y &>>$LOGFILE
+dnf install redis
 
 VALIDATE $? "Installing Redis"
 
