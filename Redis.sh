@@ -29,11 +29,11 @@ VALIDATE(){
     fi
 }
 
-dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>$LOGFILE
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm --skip-broken -y &>>$LOGFILE
 
 VALIDATE $? "RPM Redis"
 
-dnf module enable redis:remi-6.2 -y &>>$LOGFILE
+dnf module enable redis:remi-6.2 --skip-broken -y &>>$LOGFILE
 
 VALIDATE $? "Enabling Redis"
 
