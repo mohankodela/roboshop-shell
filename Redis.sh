@@ -33,11 +33,11 @@ dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm --skip-broke
 
 VALIDATE $? "RPM Redis"
 
-dnf module enable redis:remi-6.2 --skip-broken -y &>>$LOGFILE
+dnf module enable redis:remi-6.2 -y &>>$LOGFILE
 
 VALIDATE $? "Enabling Redis"
 
-dnf install redis --skip-broken -y &>>$LOGFILE
+dnf install redis -y &>>$LOGFILE
 
 VALIDATE $? "Installing Redis"
 
