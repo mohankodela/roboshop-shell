@@ -35,7 +35,7 @@ dnf module disable redis -y &>>$LOGFILE
 
 VALIDATE $? "Disabling Redis"
 
-dnf module enable redis:7 -y &>>$LOGFILE
+dnf module enable redis:remi-7.0 -y &>>$LOGFILE
 
 VALIDATE $? "Enabling Redis 7"
 
