@@ -47,6 +47,7 @@ if [ $? -ne 0 ]
 then
     echo "UserID doesn't exist"
     useradd roboshop
+    VALIDATE $? "Created User"
 else 
     echo -e "User Exists $Y SKIPPING $N"
 fi
