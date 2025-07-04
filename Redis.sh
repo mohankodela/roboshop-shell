@@ -33,7 +33,7 @@ dnf install epel-release -y &>>$LOGFILE
 
 VALIDATE $? "EPEL Install"
 
-dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>$LOGFILE
+dnf install https://rpms.remirepo.net/enterprise/remi-release-7.rpm -y &>>$LOGFILE
 
 VALIDATE $? "Remi Install"
 
