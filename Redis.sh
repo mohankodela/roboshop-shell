@@ -29,7 +29,7 @@ VALIDATE(){
     fi
 }
 
-dnf module reset redis &>>$LOGFILE
+dnf module reset redis -y &>>$LOGFILE
 
 VALIDATE $? "Reset"
 
